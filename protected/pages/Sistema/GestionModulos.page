@@ -1,0 +1,38 @@
+<%@ MasterClass="Application.layouts.DataGridPageLayout"%>
+<com:TContent ID="DataGridHolder">
+
+
+<com:XActiveDataGrid
+	ID="DataGrid"
+    Style.CssClass="dataGrid"
+	PagerStyle.CssClass="dgPager">
+ 
+    <com:XActiveTemplateColumn Id="NombreModuloColumn" HeaderText="Nombre Modulo">
+    	<prop:ItemTemplate>
+			<%# $this->Parent->DataItem->nombre_modulo %>
+		</prop:ItemTemplate>
+		<prop:EditItemTemplate>
+			<com:TTextBox ID="NombreTextBox" Text=<%# $this->Parent->DataItem->nombre_modulo %>/>
+			<com:TRequiredFieldValidator ControlToValidate="NombreTextBox" Display="Dynamic" FocusOnError="true" ErrorMessage="*"/>
+		</prop:EditItemTemplate>
+   	</com:XActiveTemplateColumn>
+
+	<com:XActiveCheckBoxColumn
+	    Id="EstadoColumn"
+	    HeaderText="Activo"
+	    DataField="estado" />
+	    
+    <com:XActiveEditCommandColumn
+        HeaderText="Editar"
+        HeaderStyle.Width="100px"
+       	EditText="Editar"
+        UpdateText="Guardar"
+		CancelText="Cancelar"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        />
+        
+        
+</com:XActiveDataGrid>
+
+</com:TContent>

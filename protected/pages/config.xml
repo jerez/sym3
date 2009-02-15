@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+
+   <authorization>
+		<allow pages="Home" users="?" />
+	</authorization>
+
+  <pages MasterClass="Application.layouts.MainLayout" Theme="Default" />
+  
+</configuration>

@@ -1,0 +1,54 @@
+.dataGrid{
+	width:100%;
+	background-color: #FFF;
+	color:#052258;
+	font-size: 80% /*smaller*/;
+	margin:0; 
+    padding:0; 
+}
+
+.dataGrid thead tr{
+	background-color: #062439;
+	color:#E1F0FF;
+	border: 2px solid #E1F0FF;
+}
+
+.dgHeader{
+}
+
+.dgItem{
+	background-color: #E1F0FF;
+}
+
+.dgAlternateItem{
+	background-color: #C6DEFF;
+}
+
+.dgSelectedItem{
+}
+
+.dgEditItem{
+	background-color: lightyellow;
+	border:1px solid lightyellow;
+}
+
+.dgFooter{
+	background-color:#062439;
+	margin:2px 0 2px 0;
+}
+
+.dgPager{
+	background-color: #062439;
+	font-size: 80% /*smaller*/;
+	color:#FFF;
+}
+.dgPager a
+{
+	color:#CCC;
+}
+
+.dgPager a:hover
+{
+	color:#F00;
+}
+

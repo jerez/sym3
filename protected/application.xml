@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<application id="SYM3" mode="Debug">
+  <paths>
+    <using namespace="System.Web.UI.ActiveControls.*" />
+  	<using namespace="Application.engine.*" />
+  	<using namespace="Application.utilities.*" />
+  	<using namespace="Application.common.*" />
+    <using namespace="Application.database.*" />
+    <using namespace="Application.controles.*" />
+    <using namespace="System.Data.ActiveRecord.Scaffold.*" />
+    <alias id="Imagenes" path="/WebServer/SYM3/Imagenes" />
+ </paths>
+
+  <!-- configurations for modules -->
+  <modules>
+	  <module id="globalization" class="System.I18N.TGlobalization" charset="UTF-8" />
+		<module id="users"
+			class="System.Security.TDbUserManager"
+			UserClass="Application.engine.Usuario"/>
+
+		<module id="auth"
+			class="Application.engine.Sym3AuthManager"
+	        UserManager="users"
+	        LoginPage="Home"
+	        AuthExpire="600"/>
+		
+	  	<module id="session"
+	  		class="THttpSession"
+	  		SessionName="SSID"
+	  		AutoStart="True"
+	  		UseTransparentSessionID="true"
+	  		CookieMode="Allow"
+	  		SavePath="/WebServer/SYM3/protected/runtime/sesiones" />
+	
+	 	<module id="db" class="System.Data.TDataSourceConfig">
+			<database
+				ConnectionString="mysql:host=localhost;dbname=SYM3"
+				Username="root"
+				Password="0641tn45" />
+			</module>
+
+		<module id="arecord"
+			class="System.Data.ActiveRecord.TActiveRecordConfig"
+			ConnectionID="db" />
+	
+	</modules>
+
+  <!-- configuration for available services -->
+  <services>
+    <service id="page" class="TPageService" DefaultPage="Home" />
+  </services>
+ 
+  <!-- application parameters
+  <parameters>
+    <parameter id="param1" value="value1" />
+    <parameter id="param2" value="value2" />
+  </parameters>
+  -->
+</application>

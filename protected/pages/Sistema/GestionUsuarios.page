@@ -1,0 +1,70 @@
+<%@ MasterClass="Application.layouts.DataGridPageLayout"%>
+<com:TContent ID="DataGridHolder">
+
+<com:XActiveDataGrid
+	ID="DataGrid"
+    Style.CssClass="dataGrid"
+	PagerStyle.CssClass="dgPager">
+ 
+    <com:XActiveTemplateColumn Id="LoginColumn" HeaderText="Login">
+    	<prop:ItemTemplate>
+			<%# $this->Parent->DataItem->login %>
+		</prop:ItemTemplate>
+		<prop:EditItemTemplate>
+			<com:TLiteral Text='<b><%# $this->Parent->DataItem->login %><b/> Password:'/>
+			<com:TTextBox ID="txtPasswd" Text=<%# $this->Parent->DataItem->password %> TextMode='Password'/>
+			<com:TRequiredFieldValidator ControlToValidate="txtPasswd" Display="Dynamic" FocusOnError="true" ErrorMessage="*"/>
+			<com:TRegularExpressionValidator ControlToValidate="txtPasswd" Display="Dynamic" RegularExpression="[\w\.]{5,16}" FocusOnError="true" ErrorMessage="*" />
+		</prop:EditItemTemplate>
+   	</com:XActiveTemplateColumn>
+
+	<com:XActiveTemplateColumn Id="NombresColumn" HeaderText="Nombres">
+    	<prop:ItemTemplate>
+			<%# $this->Parent->DataItem->nombres %>
+		</prop:ItemTemplate>
+		<prop:EditItemTemplate>
+			<com:TTextBox ID="NombresTextBox" Text=<%# $this->Parent->DataItem->nombres %>/>
+			<com:TRequiredFieldValidator ControlToValidate="NombresTextBox" Display="Dynamic" FocusOnError="true" ErrorMessage="*"/>
+		</prop:EditItemTemplate>
+   	</com:XActiveTemplateColumn>
+
+	<com:XActiveTemplateColumn Id="ApellidosColumn" HeaderText="Apellidos">
+    	<prop:ItemTemplate>
+			<%# $this->Parent->DataItem->apellidos %>
+		</prop:ItemTemplate>
+		<prop:EditItemTemplate>
+			<com:TTextBox ID="ApellidosTextBox" Text=<%# $this->Parent->DataItem->apellidos %>/>
+			<com:TRequiredFieldValidator ControlToValidate="ApellidosTextBox" Display="Dynamic" FocusOnError="true" ErrorMessage="*"/>
+		</prop:EditItemTemplate>
+   	</com:XActiveTemplateColumn>
+	
+
+	<com:XActiveTemplateColumn Id="EmailColumn" HeaderText="Email">
+	    <prop:ItemTemplate>
+			<%# $this->Parent->DataItem->email %>
+		</prop:ItemTemplate>
+		<prop:EditItemTemplate>
+			<com:TTextBox ID="EmailTextBox" Text=<%# $this->Parent->DataItem->email %>/>
+			<com:TRequiredFieldValidator ControlToValidate="EmailTextBox" Display="Dynamic" FocusOnError="true" ErrorMessage="*"/>
+			<com:TEmailAddressValidator ControlToValidate="EmailTextBox" Display="Dynamic" FocusOnError="true" ErrorMessage="*"/>
+		</prop:EditItemTemplate>
+   	</com:XActiveTemplateColumn>
+	 
+	    
+	<com:XActiveCheckBoxColumn
+	    Id="EstadoColumn"
+	    HeaderText="Activo"
+	    DataField="estado" />
+	    
+    <com:XActiveEditCommandColumn
+        HeaderText="Editar"
+        HeaderStyle.Width="100px"
+       	EditText="Editar"
+        UpdateText="Guardar"
+		CancelText="Cancelar"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        />
+</com:XActiveDataGrid>
+
+</com:TContent>
