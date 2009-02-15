@@ -1,0 +1,63 @@
+<%@ Title="Prueba" %>
+<com:TContent ID="Main">
+
+<com:TScaffoldView RecordClass="UserRecord" />
+
+<br>
+
+
+<br>
+<br>
+<br>
+
+
+<com:TButton
+    Text="Abrir Pinza"
+    Width="200px"
+    ForeColor="silver"
+    BackColor="black"
+    Font.Size="14pt"
+	OnCommand="OnAbrirPinzaClicked"
+
+/>
+<com:TButton
+    Text="Cerrar Pinza"
+    Width="200px"
+    ForeColor="silver"
+    BackColor="black"
+    Font.Size="14pt"
+    OnCommand="OnCerrarPinzaClicked"
+
+/>
+
+<com:TButton
+    Text="Waist Izq"
+    Width="200px"
+    ForeColor="silver"
+    BackColor="black"
+    Font.Size="14pt"
+    OnCommand="OnWaistIzqClicked"
+
+/>
+
+<com:TButton
+    Text="Waist Der"
+    Width="200px"
+    ForeColor="silver"
+    BackColor="black"
+    Font.Size="14pt"
+    OnCommand="OnWaistDerClicked"
+
+/>
+<com:TButton
+    Text="Ejecutar Programa"
+    Width="200px"
+    ForeColor="silver"
+    BackColor="black"
+    Font.Size="14pt"
+    OnCommand="OnEjecutarProgramaClicked"
+
+/>
+
+
+</com:TContent>
