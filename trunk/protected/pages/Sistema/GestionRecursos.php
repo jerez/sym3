@@ -13,8 +13,7 @@ class GestionRecursos extends DatagridBasePage{
 	function onLoad($param)
 	{
 		parent::onLoad($param);
-
-		$this->ObtenerRecursosDisponibles();
+		$this->Master->Validar=false;
 	}
 
 	/**
@@ -40,6 +39,7 @@ class GestionRecursos extends DatagridBasePage{
 	 */
 	protected function itemCreated($sender,$param){
 		$item=$param->Item;
+
 		if($item->ItemType==='EditItem')
 		{
 			$cell = $item->Cells[0];
@@ -58,14 +58,25 @@ class GestionRecursos extends DatagridBasePage{
 	 * @param TActiveRecord $record
 	 */
 	protected function SetearValoresGuardar($item,$record){
-		//      $record->sys_seg_submodulos_id=$item->SubModuloColumn->DropDownList->SelectedValue;
-		//		$record->nombre_funcion=$item->NombreFuncionColumn->NombreTextBox->Text;
-		//		$record->visible_menu = $item->VisibleMenuColumn->CheckBox->Checked;
-		//		$record->estado = $item->EstadoColumn->CheckBox->Checked;
+//		if (isset($this->List)) {
+	$cell = $item->Cells[0];
+	$list = $cell->Controls[0];
+			$record->identificador_recurso = $list->SelectedValue;
+	//	}else{
+		//	$record->identificador_recurso = $item->IdentificadorRecursoColumn->Text;
+		//}
+		//$cell = $item->Cells[0];
+
+
+		//$record->identificador_recurso=$item->IdentificadorRecursoColumn->List->SelectedValue;
+		//$record->identificador_recurso=$item->IdentificadorRecursoColumn->Text;
+		$record->sys_seg_funciones_id=$item->FuncionColumn->DropDownList->SelectedValue;
+		$record->es_principal = $item->PrincipalColumn->CheckBox->Checked;
+		$record->estado = $item->EstadoColumn->CheckBox->Checked;
 	}
 
 	/**
-	 * Carga Todos los modulos para poblar el DropDown List
+	 * Carga Todas las funciones para poblar el DropDown List
 	 *
 	 * @return unknown
 	 */
@@ -94,8 +105,7 @@ class GestionRecursos extends DatagridBasePage{
 	 * @return array
 	 */
 	protected function ObtenerRecursosDisponibles(){
-	
-		return array_diff($this->ObtenerRecursosFS(),$this->ObtenerRecursosBD());
+		return	array_diff($this->ObtenerRecursosFS(),$this->ObtenerRecursosBD());
 	}
 
 	/**
@@ -114,7 +124,8 @@ class GestionRecursos extends DatagridBasePage{
 				$recurso =ereg_replace($patron,'',
 				str_replace(DIRECTORY_SEPARATOR,'.',
 				str_replace($path.DIRECTORY_SEPARATOR,'',$name)));
-				$array_identificadores[]=$recurso;
+
+				if (strtolower($recurso)!='home')$array_identificadores[$recurso]=$recurso;
 			}
 		}
 		return $array_identificadores;

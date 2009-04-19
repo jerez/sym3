@@ -1,6 +1,6 @@
 <%@ MasterClass="Application.layouts.MainLayout"%>
 <com:TContent ID="Main">
-	<com:TClientScript PradoScripts="validator" />
+	<com:TClientScript PradoScripts="validator" Visible="<%= $this->Validar %>"/>
 	<com:TContentPlaceHolder ID="DataGridHolder"/>
 	<div align="center" class="dgFooter">
 		<com:TActiveButton

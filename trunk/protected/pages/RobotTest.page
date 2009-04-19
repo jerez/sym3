@@ -1,16 +1,6 @@
 <%@ Title="Prueba" %>
 <com:TContent ID="Main">
 
-<com:TScaffoldView RecordClass="UserRecord" />
-
-<br>
-
-
-<br>
-<br>
-<br>
-
-
 <com:TButton
     Text="Abrir Pinza"
     Width="200px"

@@ -12,7 +12,14 @@
  */
 class DataGridPageLayout extends TTemplateControl
 {
-	
+	/**
+	 * Por defecto en true, 
+	 * solo deshabilitar EN LAS PAGINAS QUE IMPLEMENTE ESTE TEMPLATE si no se desean incluir los js de validación
+	 * NO DEBE CAMBIARSE NUNCA EL VALOR EN ESTE SCRIPT
+	 *
+	 * @var BOOL
+	 */
+	public $Validar = true;
 }
 
 ?>
