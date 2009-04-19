@@ -1,7 +1,6 @@
 <%@ MasterClass="Application.layouts.DataGridPageLayout"%>
 <com:TContent ID="DataGridHolder">
 
-
 <com:XActiveDataGrid
 	ID="DataGrid"
     Style.CssClass="dataGrid"

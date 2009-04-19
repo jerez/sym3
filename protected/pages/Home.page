@@ -1,20 +1,12 @@
 <%@ Title="SYM3" %>
 
 <com:TContent ID="Main">
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-<br>
-<p>
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-asfasfasdfg sadfasdfsadf asdf sadf sadf sadf sadf s df sad f sadf sad f sad f sadf sad f sadf sa df sad f sadf sa df sad f sadf sa df sadf sa df sad fasdfasdfasdfsadfsadfsadf sadf sad f sadf dsaf
-</p>
-<br>
 
+<h3>SYM3</h3>
+<com:TLabel
+	ID="Texto"
+    Font.Name="Verdana"
+    Font.Size="12pt"
+/>
 
 </com:TContent>

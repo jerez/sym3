@@ -1,6 +1,6 @@
 <?php
 
-class Test extends TPage
+class RobotTest extends TPage
 {
 	public function OnAbrirPinzaClicked($sender,$param)
 	{
