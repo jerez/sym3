@@ -39,7 +39,7 @@ class GestionRecursos extends DatagridBasePage{
 	 */
 	protected function itemCreated($sender,$param){
 		$item=$param->Item;
-
+		
 		if($item->ItemType==='EditItem')
 		{
 			$cell = $item->Cells[0];
@@ -58,18 +58,9 @@ class GestionRecursos extends DatagridBasePage{
 	 * @param TActiveRecord $record
 	 */
 	protected function SetearValoresGuardar($item,$record){
-//		if (isset($this->List)) {
-	$cell = $item->Cells[0];
-	$list = $cell->Controls[0];
-			$record->identificador_recurso = $list->SelectedValue;
-	//	}else{
-		//	$record->identificador_recurso = $item->IdentificadorRecursoColumn->Text;
-		//}
-		//$cell = $item->Cells[0];
-
-
-		//$record->identificador_recurso=$item->IdentificadorRecursoColumn->List->SelectedValue;
-		//$record->identificador_recurso=$item->IdentificadorRecursoColumn->Text;
+		$cell = $item->Cells[0];
+		$list = $cell->Controls[0];
+		if (trim($list->SelectedValue) != '') $record->identificador_recurso = $list->SelectedValue;
 		$record->sys_seg_funciones_id=$item->FuncionColumn->DropDownList->SelectedValue;
 		$record->es_principal = $item->PrincipalColumn->CheckBox->Checked;
 		$record->estado = $item->EstadoColumn->CheckBox->Checked;

@@ -56,7 +56,15 @@
 	    HeaderText="Activo"
 	    DataField="estado" />
 	    
-    <com:XActiveEditCommandColumn
+     <com:XActiveTemplateColumn HeaderText="Perfiles" >
+		<prop:ItemTemplate>
+			<com:THyperLink 
+				Text="Perfiles"
+				NavigateUrl=<%# Prado::getApplication()->Service->ConstructUrl('Sistema.PerfilesUsuarios',array('usuario_id'=> $this->Parent->DataItem->sys_seg_usuarios_id))%>/>
+		</prop:ItemTemplate> 
+	</com:XActiveTemplateColumn>
+	    
+	<com:XActiveEditCommandColumn
         HeaderText="Editar"
         HeaderStyle.Width="100px"
        	EditText="Editar"
@@ -65,6 +73,7 @@
         ItemStyle.HorizontalAlign="Center"
         ItemStyle.Font.Italic="false"
         />
+    
 </com:XActiveDataGrid>
 
 </com:TContent>

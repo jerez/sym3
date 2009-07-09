@@ -49,6 +49,13 @@
   <!-- configuration for available services -->
   <services>
     <service id="page" class="TPageService" DefaultPage="Home" />
+     <service id="soap" class="System.Web.Services.TSoapService">
+    <soap id="melfaWS" provider="Application.engine.ControladorMelfa" />
+    <!--
+    <soap...other soap service... />
+    -->
+  </service>
+
   </services>
  
   <!-- application parameters
