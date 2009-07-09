@@ -86,33 +86,36 @@ class Sym3AuthManager extends TAuthManager {
 	 * @param unknown_type $param
 	 */
 	public function OnAuthorize($param){
-
-		$page = $this->Application->Service->RequestedPagePath;
-		$idUsuario = $this->Application->User->Id;
-		if (isset($page) && isset($idUsuario)) {
-			$db = $this->Application->Modules['db']->Database;
-			$db->Active = true;
-			$sql ="select sys_seg_recursos_id
+		if ($this->Application->Service instanceof TPageService ){
+			$page = $this->Application->Service->RequestedPagePath;
+			$idUsuario = $this->Application->User->Id;
+			if (isset($page) && isset($idUsuario)) {
+				$db = $this->Application->Modules['db']->Database;
+				$db->Active = true;
+				$sql ="select sys_seg_recursos_id
 			from sys_seg_usuarios_has_recursos_view 
 			where sys_seg_usuarios_id=".TPropertyValue::ensureInteger($idUsuario)." 
 			and identificador_recurso='".TPropertyValue::ensureString($page)."'";
 
-			$cmd = $db->createCommand($sql);
+				$cmd = $db->createCommand($sql);
 
-			if(!TPropertyValue::ensureBoolean($cmd->queryScalar())){
-				$this->DenyRequest();
+				if(!TPropertyValue::ensureBoolean($cmd->queryScalar())){
+					$this->DenyRequest();
+				}
+				$db->Active = false;
+			}else{
+				parent::onAuthorize($param);
 			}
-			$db->Active = false;
-		}else{
+		}else {
 			parent::onAuthorize($param);
 		}
 
 	}
-	
+
 	private function DenyRequest(){
 		$this->Application->getResponse()->setStatusCode(401);
 		$this->Application->completeRequest();
 	}
-	
+
 }
 ?>
