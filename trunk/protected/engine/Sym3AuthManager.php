@@ -42,7 +42,7 @@ class Sym3AuthManager extends TAuthManager {
 	 * @param string $password
 	 * @return boolean
 	 */
-	public function login($login,$password){
+	public function login($login,$password,$expire=0){
 
 		//Si no se ha creado o si el usuario es el mismo:: (Bug si se refresca la pagina depues de loguearse)
 		if (Prado::getApplication()->User->Id!==null && Prado::getApplication()->User->Name!==$login) {
