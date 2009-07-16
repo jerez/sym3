@@ -1,0 +1,12 @@
+<%@ Title="SYM3" %>
+
+<com:TContent ID="Main">
+
+<h3>SYM3</h3>
+<com:TLabel
+	ID="Texto"
+    Font.Name="Verdana"
+    Font.Size="12pt"
+/>
+
+</com:TContent>
