@@ -1,0 +1,305 @@
+[PHP]
+
+; Enable the PHP scripting language engine under Apache.
+engine = On
+
+; Enable compatibility mode with Zend Engine 1 (PHP 4.x)
+zend.ze1_compatibility_mode = Off
+
+; Allow the <? tag.  Otherwise, only <?php and <script> tags are recognized.
+short_open_tag = Off
+
+; Allow ASP-style <% %> tags.
+asp_tags = Off
+
+; The number of significant digits displayed in floating point numbers.
+precision    =  14
+
+; Enforce year 2000 compliance (will cause problems with non-compliant browsers)
+y2k_compliance = On
+
+; Output buffering allows you to send header lines (including cookies) 
+output_buffering = 4096
+
+; Transparent output compression using the zlib library
+zlib.output_compression = Off
+;zlib.output_compression_level = -1
+;zlib.output_handler =
+
+; Implicit flush tells PHP to tell the output layer to flush itself
+implicit_flush = Off
+
+; The unserialize callback function will be called (with the undefined class' name as parameter)
+; callback-function.
+unserialize_callback_func=
+
+; When floats & doubles are serialized store serialize_precision significant
+; digits after the floating point. The default value ensures that when floats
+; are decoded with unserialize, the data will remain the same.
+serialize_precision = 100
+
+; Whether to enable the ability to force arguments to be passed by reference at function call time.
+allow_call_time_pass_reference = Off
+
+; Safe Mode
+safe_mode = Off
+safe_mode_gid = Off
+safe_mode_include_dir =
+safe_mode_exec_dir =
+safe_mode_allowed_env_vars = PHP_
+safe_mode_protected_env_vars = LD_LIBRARY_PATH
+
+; open_basedir, if set, limits all file operations to the defined directory
+;open_basedir =
+
+; This directive allows you to disable certain functions for security reasons.
+disable_functions =
+
+; This directive allows you to disable certain classes for security reasons.
+disable_classes =
+
+; Decides whether PHP may expose the fact that it is installed on the server
+expose_php = On
+
+
+;;;;;;;;;;;;;;;;;;;
+; Resource Limits ;
+;;;;;;;;;;;;;;;;;;;
+
+max_execution_time = 30     ; Maximum execution time of each script, in seconds
+max_input_time = 60	; Maximum amount of time each script may spend parsing request data
+;max_input_nesting_level = 64 ; Maximum input variable nesting level
+memory_limit = 128M      ; Maximum amount of memory a script may consume (128MB)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Error handling and logging ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+error_reporting  =  E_ALL
+
+; Print out errors (as a part of the output).  For production web sites,
+display_errors = Off
+
+; Even when display_errors is on, errors that occur during PHP's startup
+display_startup_errors = Off
+
+; Log errors into a log file (server-specific log, stderr, or error_log (below))
+log_errors = On
+
+; Set maximum length of log_errors. In error_log information about the source is added. T
+log_errors_max_len = 1024
+
+; Do not log repeated messages. Repeated errors must occur in same file on same
+ignore_repeated_errors = Off
+
+; Ignore source of message when ignoring repeated messages. When this setting
+ignore_repeated_source = Off
+
+; If this parameter is set to Off, then memory leaks will not be shown (on stdout or in the log)
+report_memleaks = On
+
+;report_zend_debug = 0
+
+; Store the last error/warning message in $php_errormsg (boolean).
+track_errors = Off
+
+;;;;;;;;;;;;;;;;;
+; Data Handling ;
+;;;;;;;;;;;;;;;;;
+; This directive describes the order in which PHP registers GET, POST, Cookie, Environment and Built-in variables (G, P, C, E & S respectively, often referred to as EGPCS or GPC).
+variables_order = "GPCS"
+
+register_globals = Off
+register_long_arrays = Off
+register_argc_argv = Off
+auto_globals_jit = On
+
+; Maximum size of POST data that PHP will accept.
+post_max_size = 8M
+
+; Magic quotes
+; Magic quotes for incoming GET/POST/Cookie data.
+magic_quotes_gpc = Off
+
+; Magic quotes for runtime-generated data, e.g. data from SQL, from exec(), etc.
+magic_quotes_runtime = Off
+
+; Use Sybase-style magic quotes (escape ' with '' instead of \').
+magic_quotes_sybase = Off
+
+; Automatically add files before or after any PHP document.
+auto_prepend_file =
+auto_append_file =
+
+; PHP's built-in default is text/html
+default_mimetype = "text/html"
+;default_charset = "iso-8859-1"
+
+; Always populate the $HTTP_RAW_POST_DATA variable.
+;always_populate_raw_post_data = On
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; Paths and Directories ;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Directory in which the loadable extensions (modules) reside.
+extension_dir = "ext/"
+
+; Whether or not to enable the dl() function.  The dl() function does NOT work
+; properly in multithreaded servers, such as IIS or Zeus, and is automatically
+; disabled on them.
+enable_dl = On
+
+
+
+;;;;;;;;;;;;;;;;
+; File Uploads ;
+;;;;;;;;;;;;;;;;
+
+; Whether to allow HTTP file uploads.
+file_uploads = On
+
+; Temporary directory for HTTP uploaded files (will use system default if not
+; specified).
+upload_tmp_dir = /WebServer/TempFiles
+
+; Maximum allowed size for uploaded files.
+upload_max_filesize = 2M
+
+
+;;;;;;;;;;;;;;;;;;
+; Fopen wrappers ;
+;;;;;;;;;;;;;;;;;;
+
+; Whether to allow the treatment of URLs (like http:// or ftp://) as files.
+allow_url_fopen = On
+
+; Whether to allow include/require to open URLs (like http:// or ftp://) as files.
+allow_url_include = Off
+
+; Define the anonymous ftp password (your email address)
+;from="john@doe.com"
+
+; Define the User-Agent string
+; user_agent="PHP"
+
+; Default timeout for socket based streams (seconds)
+default_socket_timeout = 60
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+; Dynamic Extensions ;
+;;;;;;;;;;;;;;;;;;;;;;
+
+; Windows Extensions
+
+extension=php_mcrypt.dll
+extension=php_openssl.dll
+extension=php_pdo.dll
+extension=php_pdo_mysql.dll
+extension=php_pdo_sqlite.dll
+extension=php_soap.dll
+extension=php_sockets.dll
+extension=php_sqlite.dll
+extension=php_xsl.dll
+extension=php_zip.dll
+
+;;;;;;;;;;;;;;;;;;;
+; Module Settings ;
+;;;;;;;;;;;;;;;;;;;
+
+[Session]
+; Handler used to store/retrieve data.
+session.save_handler = files
+
+; Whether to use cookies.
+session.use_cookies = 1
+
+;session.cookie_secure =
+
+; Name of the session (used as cookie name).
+session.name = PHPSESSID
+
+; Initialize session on request startup.
+session.auto_start = 0
+
+; Lifetime in seconds of cookie or, if 0, until browser is restarted.
+session.cookie_lifetime = 0
+
+; The path for which the cookie is valid.
+session.cookie_path = /
+
+; The domain for which the cookie is valid.
+session.cookie_domain =
+
+; Whether or not to add the httpOnly flag to the cookie, which makes it inaccessible to browser scripting languages such as JavaScript.
+session.cookie_httponly = 
+
+; Handler used to serialize data.  php is the standard serializer of PHP.
+session.serialize_handler = php
+
+; Define the probability that the 'garbage collection' process is started on every session initialization.
+session.gc_probability = 1
+session.gc_divisor     = 1000
+
+; After this number of seconds, stored data will be seen as 'garbage' and cleaned up by the garbage collection process.
+session.gc_maxlifetime = 1440
+session.bug_compat_42 = 0
+session.bug_compat_warn = 1
+
+; Check HTTP Referer to invalidate externally stored URLs containing ids.
+; HTTP_REFERER has to contain this substring for the session to be
+; considered as valid.
+session.referer_check =
+
+; How many bytes to read from the file.
+session.entropy_length = 0
+
+; Specified here to create the session id.
+session.entropy_file =
+
+;session.entropy_length = 16
+
+;session.entropy_file = /dev/urandom
+
+; Set to {nocache,private,public,} to determine HTTP caching aspects or leave this empty to avoid sending anti-caching headers.
+session.cache_limiter = nocache
+
+; Document expires after n minutes.
+session.cache_expire = 180
+
+; trans sid support is disabled by default.
+session.use_trans_sid = 0
+
+; Select a hash function
+; 0: MD5   (128 bits)
+; 1: SHA-1 (160 bits)
+session.hash_function = 0
+
+; Define how many bits are stored in each character when converting
+; the binary hash data to something readable.
+;
+; 4 bits: 0-9, a-f
+; 5 bits: 0-9, a-v
+; 6 bits: 0-9, a-z, A-Z, "-", ","
+session.hash_bits_per_character = 5
+
+; The URL rewriter will look for URLs in a defined set of HTML tags.
+url_rewriter.tags = "a=href,area=href,frame=src,input=src,form=fakeentry"
+
+
+[soap]
+; Enables or disables WSDL caching feature.
+soap.wsdl_cache_enabled=1
+; Sets the directory name where SOAP extension will put cache files.
+soap.wsdl_cache_dir="/tmp"
+; (time to live) Sets the number of second while cached file will be used 
+; instead of original one.
+soap.wsdl_cache_ttl=86400
+
+; Local Variables:
+; tab-width: 4
+; End:
