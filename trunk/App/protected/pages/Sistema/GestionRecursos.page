@@ -1,0 +1,47 @@
+<%@ MasterClass="Application.layouts.DataGridPageLayout"%>
+<com:TContent ID="DataGridHolder">
+
+
+<com:XActiveDataGrid
+	ID="DataGrid"
+    Style.CssClass="dataGrid"
+	PagerStyle.CssClass="dgPager">
+ 
+    <com:TLiteralColumn 
+    	Id="IdentificadorRecursoColumn" 
+    	HeaderText="Identificador Recurso"
+    	DataField="identificador_recurso"/>
+   	
+    <com:XActiveDropDownListColumn
+        ID="FuncionColumn"
+        HeaderText="Funcion"
+        DataValueField="funcion.sys_seg_funciones_id"
+        DataTextField="funcion.nombre_funcion"
+        ListValueField="sys_seg_funciones_id"
+		ListTextField="nombre_funcion"
+		ListDataSource="<%= $this->loadFunciones() %>"/>
+
+	<com:XActiveCheckBoxColumn
+	    Id="PrincipalColumn"
+	    HeaderText="Principal/Funci&oacute;n"
+	    DataField="es_principal" />
+		
+	<com:XActiveCheckBoxColumn
+	    Id="EstadoColumn"
+	    HeaderText="Activo"
+	    DataField="estado" />
+	    
+    <com:XActiveEditCommandColumn
+        HeaderText="Editar"
+        HeaderStyle.Width="100px"
+       	EditText="Editar"
+        UpdateText="Guardar"
+		CancelText="Cancelar"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        />
+        
+        
+</com:XActiveDataGrid>
+
+</com:TContent>
