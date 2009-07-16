@@ -8,8 +8,7 @@
   	<using namespace="Application.common.*" />
     <using namespace="Application.database.*" />
     <using namespace="Application.controles.*" />
-    <using namespace="System.Data.ActiveRecord.Scaffold.*" />
-    <alias id="Imagenes" path="/WebServer/SYM3/Imagenes" />
+    <alias id="Imagenes" path="../Imagenes" />
  </paths>
 
   <!-- configurations for modules -->
@@ -31,13 +30,13 @@
 	  		AutoStart="True"
 	  		UseTransparentSessionID="true"
 	  		CookieMode="Allow"
-	  		SavePath="/WebServer/SYM3/protected/runtime/sesiones" />
+	  		SavePath="/SYM3/App/protected/runtime/sesiones" />
 	
 	 	<module id="db" class="System.Data.TDataSourceConfig">
 			<database
-				ConnectionString="mysql:host=localhost;dbname=SYM3"
-				Username="root"
-				Password="0641tn45" />
+				ConnectionString="mysql:host=localhost;dbname=SYM3;port=3308"
+				Username="sym3App"
+				Password="51m34pp" />
 			</module>
 
 		<module id="arecord"
