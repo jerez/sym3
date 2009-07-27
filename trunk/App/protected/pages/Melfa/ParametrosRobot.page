@@ -1,17 +1,73 @@
 <com:TContent ID="Main">
  
-<h1>Test</h1>
+<h2>Par&aacute;metros Sistema</h2>
+	
+	<com:TLabel 
+		Text="Direccion Ip Robot"/>
+	<com:TTextBox 
+		ID="IpRobotTextBox" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="IpRobotTextBox" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
+	<br>
+	
+	<com:TLabel 
+		Text="Puerto"/>
+	<com:TTextBox 
+		ID="PuertoTextBox" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="PuertoTextBox" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
 
+	<br>
+	
+	
+	<com:TLabel 
+		Text="Velocidad"/>
+	<com:TTextBox 
+		ID="VelocidadTextBox" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="VelocidadTextBox" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
 
-<com:TActiveButton
-    Text="click me"
-    OnCommand="buttonClicked"
-    CommandName="test"
-    ActiveControl.CallbackParameter="value"
-    CommandParameter="value"
-    OnCallback="buttonCallback"
-    />
+	<br>
+	
+	
+	<com:TLabel 
+		Text="Desplazamiento"/>
+	<com:TTextBox 
+		ID="DesplazamientoTextBox" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="DesplazamientoTextBox" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
 
-
+	<br>
+	
+	<com:TLabel 
+		Text="Timeout"/>
+	<com:TTextBox 
+		ID="TimeoutTextBox" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="TimeoutTextBox" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
+	<br><br>
+	
+	<div align="center" class="dgFooter">
+		<com:TButton
+		    Text="Guardar"
+		    OnCommand="GuardarClicked"
+		    CssClass="boton"/>
+	</div>
+	
 </com:TContent>
  

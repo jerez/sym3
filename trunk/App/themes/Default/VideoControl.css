@@ -1,0 +1,21 @@
+.linkControlVideo{
+	margin: 5px 0 5px 0;
+  	padding: 10px;
+  	border: 0;
+	width:150px;
+	height:35px;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: bolder;
+    color:white;
+	background: transparent url(images/boton2.png) no-repeat center top;
+	cursor: pointer; 
+	cursor: hand;
+}
+.linkControlVideo a, .linkControlVideo a:hover{
+
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: bolder;
+    color:white;
+    text-decoration:none;	
+}
+

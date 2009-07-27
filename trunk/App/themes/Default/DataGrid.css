@@ -35,6 +35,10 @@
 .dgFooter{
 	background-color:#062439;
 	margin:2px 0 2px 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: bolder;
+    color:white;
+    font-size:.8em;	
 }
 
 .dgPager{
