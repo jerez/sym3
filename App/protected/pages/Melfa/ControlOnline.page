@@ -1,0 +1,57 @@
+<%@ Title="Control Online" %>
+<com:TContent ID="Main" >
+
+<div class="dgFooter">
+<table width="100%" >
+	<tr>
+		<td>
+		<com:TRadioButtonList ID="DBRadioButtonList2" />
+		</td>
+		<td>
+		<div align="center" >
+			<com:TActiveButton
+			    Text="Izquierda"
+			    CssClass="boton"
+			    OnCommand="OnIzqClicked"/>
+			
+			<com:TActiveButton
+			    Text="Derecha"
+			    CssClass="boton"
+			    OnCommand="OnDerClicked"/>
+			<br>
+			
+			<com:TActiveButton
+			    Text="Abrir Pinza"
+			    CssClass="boton"
+				OnCommand="OnAbrirPinzaClicked"/>
+				
+			<com:TActiveButton
+			    Text="Cerrar Pinza"
+			    CssClass="boton"
+			    OnCommand="OnCerrarPinzaClicked"/>
+			
+			<br>
+			<com:TActiveButton
+			    Text="Ejecutar Programa"
+			    CssClass="boton"
+			    OnCommand="OnEjecutarProgramaClicked"/>
+			    
+			<com:TActiveButton
+			    Text="Detener"
+			    CssClass="boton"
+			    OnCommand="OnDetenerClicked"/>
+			    
+			<div align="center">
+				<com:VideoControl/>
+			</div>
+			    
+	    </div>
+			    
+		</td>
+	</tr>
+</table> 
+
+</div>
+
+
+</com:TContent>

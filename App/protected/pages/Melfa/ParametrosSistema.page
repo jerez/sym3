@@ -1,17 +1,51 @@
 <com:TContent ID="Main">
  
-<h1>Test</h1>
+<h2>Par&aacute;metros Sistema</h2>
 
-
-<com:TActiveButton
-    Text="click me"
-    OnCommand="buttonClicked"
-    CommandName="test"
-    ActiveControl.CallbackParameter="value"
-    CommandParameter="value"
-    OnCallback="buttonCallback"
-    />
-
-
+	<com:TLabel 
+		Text="Dominio Aplicaci&oacute;n"/>
+	<com:TTextBox 
+		ID="DominioTextBox" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="DominioTextBox" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
+	<br>
+	
+	<com:TLabel 
+		Text="Email Administrador"/>
+	<com:TTextBox 
+		ID="EmailAdministrador" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="EmailAdministrador" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
+	<com:TEmailAddressValidator 
+		ControlToValidate="EmailAdministrador"
+	 	Display="Dynamic" 
+	 	FocusOnError="true" 
+	 	ErrorMessage="*"/>
+	<br>
+	
+	<com:TLabel 
+		Text="Direccion Ip Camara"/>
+	<com:TTextBox 
+		ID="IpCamaraTextBox" />
+	<com:TRequiredFieldValidator 
+		ControlToValidate="IpCamaraTextBox" 
+		Display="Dynamic" 
+		FocusOnError="true" 
+		ErrorMessage="*"/>
+	<br><br>
+	
+	<div align="center" class="dgFooter">
+		<com:TButton
+		    Text="Guardar"
+		    OnCommand="GuardarClicked"
+		    CssClass="boton"/>
+	</div>
+	
 </com:TContent>
  

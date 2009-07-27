@@ -1,0 +1,6 @@
+<%@ Title="Video Online" %>
+<com:TContent ID="Main">
+	<div class="dgFooter" align="center">
+		<br><com:VideoControl/>
+	</div>
+</com:TContent>
