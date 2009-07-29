@@ -1,6 +1,6 @@
 <?php
 
-class Melfa
+class Melfa 
 {
 	private $_configuracion;
 
@@ -64,7 +64,6 @@ class Melfa
 			{
 				throw new THttpException(999,"Error de socket, no se pudo escribir");
 			}
-			$str_data = fgets($socket,2048);
 			//Se hace esto para lograr una comunicación unidireccional
 			//lo óptimo es manejar comunicación bidireccinal, para ello no se hace el sleep,
 			//se lee el buffer del socket.
@@ -93,17 +92,17 @@ class Melfa
 		return array("1;1;EXECJOVRD {$this->_configuracion->velocidad}.0","1;1;EXECJSYM3 = ($stringPosiciones)","1;1;EXECMOV J_CURR + JSYM3");
 	}
 
-	function conectar($ip, $puerto) {
+	private function conectar($ip, $puerto) {
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		socket_connect($socket, $ip, $puerto);
 		return $socket;
 	}
 
-	function leer($socket) {
+	private function leer($socket) {
 		return socket_read($socket, 1024, PHP_NORMAL_READ);
 	}
 
-	function escribir($socket, $linea) {
+	private function escribir($socket, $linea) {
 		socket_write($socket, $linea."\n", strlen($linea)+1);
 	}
 

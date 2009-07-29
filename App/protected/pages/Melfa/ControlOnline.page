@@ -10,14 +10,14 @@
 		<td>
 		<div align="center" >
 			<com:TActiveButton
-			    Text="Izquierda"
+			    Text="Negativo"
 			    CssClass="boton"
-			    OnCommand="OnIzqClicked"/>
+			    OnCommand="OnNegClicked"/>
 			
 			<com:TActiveButton
-			    Text="Derecha"
+			    Text="Positivo"
 			    CssClass="boton"
-			    OnCommand="OnDerClicked"/>
+			    OnCommand="OnPosClicked"/>
 			<br>
 			
 			<com:TActiveButton
