@@ -13,46 +13,51 @@ AppPublisherURL=http://code.google.com/p/sym3/
 AppSupportURL=http://code.google.com/p/sym3/
 AppUpdatesURL=http://code.google.com/p/sym3/
 DefaultDirName=\SYM3
-DisableDirPage=yes
+DisableDirPage=true
 DefaultGroupName=SYM3
-DisableProgramGroupPage=yes
+DisableProgramGroupPage=true
 LicenseFile=\Sym3Source\conf\GPL.LIC
 OutputDir=\Sym3Source\Installer
 OutputBaseFilename=SetupSYM3
 Compression=lzma
-SolidCompression=yes
+SolidCompression=true
+ShowTasksTreeLines=true
+UpdateUninstallLogAppName=false
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: english; MessagesFile: compiler:Default.isl
+Name: spanish; MessagesFile: compiler:Languages\Spanish.isl
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
+Name: quicklaunchicon; Description: {cm:CreateQuickLaunchIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
 
 [Files]
-Source: "C:\Sym3Source\SYM3ServiceMonitor\SYM3ServiceMonitor\bin\Release\SYM3ServiceMonitor.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: C:\Sym3Source\SYM3ServiceMonitor\SYM3ServiceMonitor\bin\Release\SYM3ServiceMonitor.exe; DestDir: {app}; Flags: ignoreversion
 
-Source: "C:\Sym3Source\Apache\*"; DestDir: "{app}\Apache"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Sym3Source\MySql\*"; DestDir: "{app}\MySql"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Sym3Source\PHP\*"; DestDir: "{app}\PHP"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Sym3Source\Conf\*"; DestDir: "{app}\Conf"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Sym3Source\Framework\*"; DestDir: "{app}\Framework"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Sym3Source\App\*"; DestDir: "{app}\App"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Sym3Source\InstalarServicio.bat"; DestDir: "{app}"; Flags: ignoreversion; AfterInstall: EjecutarBat()
-Source: "C:\Sym3Source\IniciarServicio.bat"; DestDir: "{app}"; Flags: ignoreversion; AfterInstall: EjecutarBat()
-Source: "C:\Sym3Source\DesinstalarServicio.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Sym3Source\DetenerServicio.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: ..\Apache\*; DestDir: {app}\Apache; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ..\MySql\*; DestDir: {app}\MySql; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ..\PHP\*; DestDir: {app}\PHP; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ..\Conf\*; DestDir: {app}\Conf; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ..\InstalarServicio.bat; DestDir: {app}\.bats; Flags: ignoreversion; AfterInstall: EjecutarBat()
+Source: ..\IniciarServicio.bat; DestDir: {app}\.bats; Flags: ignoreversion; AfterInstall: EjecutarBat()
+Source: ..\Framework\*; DestDir: {app}\Framework; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ..\CrearDB.bat; DestDir: {app}\.bats; Tasks: ; Flags: ignoreversion; AfterInstall: EjecutarBat()
+Source: ..\App\*; DestDir: {app}\App; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ..\DesinstalarServicio.bat; DestDir: {app}\.bats; Flags: ignoreversion
+Source: ..\DetenerServicio.bat; DestDir: {app}\.bats; Flags: ignoreversion
+Source: ..\LanzaBrowser.bat; DestDir: {app}\.bats; Flags: ignoreversion
 
 [Icons]
-Name: "{group}\SYM3"; Filename: "{app}\SYM3ServiceMonitor.exe"
-Name: "{group}\{cm:ProgramOnTheWeb,SYM3}"; Filename: "http://code.google.com/p/sym3/"
-Name: "{group}\{cm:UninstallProgram,SYM3}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\SYM3"; Filename: "{app}\SYM3ServiceMonitor.exe"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\SYM3"; Filename: "{app}\SYM3ServiceMonitor.exe"; Tasks: quicklaunchicon
+Name: {group}\SYM3; Filename: {app}\SYM3ServiceMonitor.exe
+Name: {group}\{cm:ProgramOnTheWeb,SYM3}; Filename: http://code.google.com/p/sym3/
+Name: {group}\{cm:UninstallProgram,SYM3}; Filename: {uninstallexe}
+Name: {commondesktop}\SYM3; Filename: {app}\SYM3ServiceMonitor.exe; Tasks: desktopicon
+Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\SYM3; Filename: {app}\SYM3ServiceMonitor.exe; Tasks: quicklaunchicon
 
 [Run]
-Filename: "{app}\SYM3ServiceMonitor.exe"; Description: "{cm:LaunchProgram,SYM3}"; Flags: nowait postinstall skipifsilent
+Filename: {app}\SYM3ServiceMonitor.exe; Description: {cm:LaunchProgram,SYM3}; Flags: nowait postinstall skipifsilent
+Filename: {app}\.bats\LanzaBrowser.bat
 
 [Code]
 procedure EjecutarBat();
@@ -60,4 +65,3 @@ var resultCode: Integer;
 begin
     Exec(ExpandConstant(CurrentFileName),'','', SW_SHOW,ewWaitUntilTerminated, resultCode)
 end;
-
