@@ -1,0 +1,413 @@
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: SYM3
+-- ------------------------------------------------------
+-- Server version	5.0.83-community-nt
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `SYM3`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `sym3` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `SYM3`;
+
+--
+-- Table structure for table `configuracion_melfa`
+--
+
+DROP TABLE IF EXISTS `configuracion_melfa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `configuracion_melfa` (
+  `direccion_ip` varchar(15) NOT NULL,
+  `timeout` int(11) NOT NULL,
+  `puerto` int(11) NOT NULL,
+  `configuracion_melfa_id` int(11) NOT NULL,
+  `desplazamiento` int(11) NOT NULL,
+  `velocidad` int(11) NOT NULL,
+  PRIMARY KEY  (`configuracion_melfa_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `configuracion_melfa`
+--
+
+LOCK TABLES `configuracion_melfa` WRITE;
+/*!40000 ALTER TABLE `configuracion_melfa` DISABLE KEYS */;
+INSERT INTO `configuracion_melfa` VALUES ('192.168.0.1',9000,10001,1,5,100);
+/*!40000 ALTER TABLE `configuracion_melfa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `configuracion_sistema`
+--
+
+DROP TABLE IF EXISTS `configuracion_sistema`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `configuracion_sistema` (
+  `email_administrador` varchar(45) NOT NULL,
+  `dominio_aplicacion` varchar(45) NOT NULL,
+  `direccion_ip_camara` varchar(15) NOT NULL,
+  `configuracion_sistema_id` int(11) NOT NULL,
+  PRIMARY KEY  (`configuracion_sistema_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `configuracion_sistema`
+--
+
+LOCK TABLES `configuracion_sistema` WRITE;
+/*!40000 ALTER TABLE `configuracion_sistema` DISABLE KEYS */;
+INSERT INTO `configuracion_sistema` VALUES ('admin@sym3.dyndns.org','sym3.dyndns.org','192.168.0.115',1);
+/*!40000 ALTER TABLE `configuracion_sistema` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_seg_funciones`
+--
+
+DROP TABLE IF EXISTS `sys_seg_funciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_funciones` (
+  `sys_seg_funciones_id` int(11) NOT NULL auto_increment,
+  `sys_seg_submodulos_id` int(11) NOT NULL,
+  `nombre_funcion` varchar(45) NOT NULL,
+  `visible_menu` tinyint(1) NOT NULL default '1',
+  `estado` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`sys_seg_funciones_id`),
+  KEY `fk_sys_seg_funciones_submodulos` (`sys_seg_submodulos_id`),
+  CONSTRAINT `fk_sys_seg_funciones_submodulos` FOREIGN KEY (`sys_seg_submodulos_id`) REFERENCES `sys_seg_submodulos` (`sys_seg_submodulos_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_funciones`
+--
+
+LOCK TABLES `sys_seg_funciones` WRITE;
+/*!40000 ALTER TABLE `sys_seg_funciones` DISABLE KEYS */;
+INSERT INTO `sys_seg_funciones` VALUES (1,1,'Ingreso Aplicación',0,1),(2,2,'Gestion Usuarios',1,1),(3,2,'Asociar Perfiles',0,1),(4,3,'Gestion Perfiles',1,1),(5,3,'Asociar Funciones',0,1),(6,4,'Gestion Modulos',1,1),(7,4,'Gestion SubModulos',1,1),(8,4,'Gestion Funciones',1,1),(9,4,'Gestion Recursos',1,1),(10,5,'Parametros Robot',1,1),(11,5,'Parametros Sistema',1,1),(12,6,'Control Online',1,1),(13,6,'Visualizacion',1,1);
+/*!40000 ALTER TABLE `sys_seg_funciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_seg_modulos`
+--
+
+DROP TABLE IF EXISTS `sys_seg_modulos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_modulos` (
+  `sys_seg_modulos_id` int(11) NOT NULL auto_increment,
+  `nombre_modulo` varchar(45) NOT NULL,
+  `estado` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`sys_seg_modulos_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_modulos`
+--
+
+LOCK TABLES `sys_seg_modulos` WRITE;
+/*!40000 ALTER TABLE `sys_seg_modulos` DISABLE KEYS */;
+INSERT INTO `sys_seg_modulos` VALUES (1,'Sistema',1),(2,'Melfa',1);
+/*!40000 ALTER TABLE `sys_seg_modulos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_seg_perfiles`
+--
+
+DROP TABLE IF EXISTS `sys_seg_perfiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_perfiles` (
+  `sys_seg_perfiles_id` int(11) NOT NULL auto_increment,
+  `nombre_perfil` varchar(45) NOT NULL,
+  `estado` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`sys_seg_perfiles_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_perfiles`
+--
+
+LOCK TABLES `sys_seg_perfiles` WRITE;
+/*!40000 ALTER TABLE `sys_seg_perfiles` DISABLE KEYS */;
+INSERT INTO `sys_seg_perfiles` VALUES (1,'Administrador',1);
+/*!40000 ALTER TABLE `sys_seg_perfiles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_seg_perfiles_has_funciones`
+--
+
+DROP TABLE IF EXISTS `sys_seg_perfiles_has_funciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_perfiles_has_funciones` (
+  `sys_seg_perfiles_id` int(11) NOT NULL,
+  `sys_seg_funciones_id` int(11) NOT NULL,
+  PRIMARY KEY  (`sys_seg_perfiles_id`,`sys_seg_funciones_id`),
+  KEY `fk_sys_seg_perfiles_has_funciones` (`sys_seg_perfiles_id`),
+  KEY `fk_sys_seg_funciones_has_perfiles` (`sys_seg_funciones_id`),
+  CONSTRAINT `fk_sys_seg_funciones_has_perfiles` FOREIGN KEY (`sys_seg_funciones_id`) REFERENCES `sys_seg_funciones` (`sys_seg_funciones_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sys_seg_perfiles_has_funciones` FOREIGN KEY (`sys_seg_perfiles_id`) REFERENCES `sys_seg_perfiles` (`sys_seg_perfiles_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_perfiles_has_funciones`
+--
+
+LOCK TABLES `sys_seg_perfiles_has_funciones` WRITE;
+/*!40000 ALTER TABLE `sys_seg_perfiles_has_funciones` DISABLE KEYS */;
+INSERT INTO `sys_seg_perfiles_has_funciones` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13);
+/*!40000 ALTER TABLE `sys_seg_perfiles_has_funciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_seg_recursos`
+--
+
+DROP TABLE IF EXISTS `sys_seg_recursos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_recursos` (
+  `sys_seg_recursos_id` int(11) NOT NULL auto_increment,
+  `sys_seg_funciones_id` int(11) NOT NULL,
+  `identificador_recurso` varchar(45) NOT NULL,
+  `es_principal` tinyint(1) NOT NULL default '0',
+  `estado` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`sys_seg_recursos_id`),
+  KEY `fk_sys_seg_recursos_funciones` (`sys_seg_funciones_id`),
+  CONSTRAINT `fk_sys_seg_recursos_funciones` FOREIGN KEY (`sys_seg_funciones_id`) REFERENCES `sys_seg_funciones` (`sys_seg_funciones_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_recursos`
+--
+
+LOCK TABLES `sys_seg_recursos` WRITE;
+/*!40000 ALTER TABLE `sys_seg_recursos` DISABLE KEYS */;
+INSERT INTO `sys_seg_recursos` VALUES (1,1,'LoggedPage',1,1),(2,2,'Sistema.GestionUsuarios',1,1),(3,3,'Sistema.PerfilesUsuarios',0,1),(4,4,'Sistema.GestionPerfiles',1,1),(5,5,'Sistema.FuncionesPerfil',0,1),(6,6,'Sistema.GestionModulos',1,1),(7,7,'Sistema.GestionSubModulos',1,1),(8,8,'Sistema.GestionFunciones',1,1),(9,9,'Sistema.GestionRecursos',1,1),(10,10,'Melfa.ParametrosRobot',1,1),(11,11,'Melfa.ParametrosSistema',0,1),(12,12,'Melfa.ControlOnline',0,1),(13,13,'Melfa.VideoOnline',1,1);
+/*!40000 ALTER TABLE `sys_seg_recursos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_seg_submodulos`
+--
+
+DROP TABLE IF EXISTS `sys_seg_submodulos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_submodulos` (
+  `sys_seg_submodulos_id` int(11) NOT NULL auto_increment,
+  `sys_seg_modulos_id` int(11) NOT NULL,
+  `nombre_submodulo` varchar(45) NOT NULL,
+  `estado` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`sys_seg_submodulos_id`),
+  KEY `fk_sys_seg_submodulos_modulos` (`sys_seg_modulos_id`),
+  CONSTRAINT `fk_sys_seg_submodulos_modulos` FOREIGN KEY (`sys_seg_modulos_id`) REFERENCES `sys_seg_modulos` (`sys_seg_modulos_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_submodulos`
+--
+
+LOCK TABLES `sys_seg_submodulos` WRITE;
+/*!40000 ALTER TABLE `sys_seg_submodulos` DISABLE KEYS */;
+INSERT INTO `sys_seg_submodulos` VALUES (1,1,'Acceso Basico',1),(2,1,'Usuarios',1),(3,1,'Perfiles',1),(4,1,'Navegación',1),(5,2,'Parametrizacion',1),(6,2,'Control',1);
+/*!40000 ALTER TABLE `sys_seg_submodulos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_seg_usuarios`
+--
+
+DROP TABLE IF EXISTS `sys_seg_usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_usuarios` (
+  `sys_seg_usuarios_id` int(11) NOT NULL auto_increment,
+  `login` varchar(12) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `nombres` varchar(64) NOT NULL,
+  `apellidos` varchar(64) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `estado` tinyint(1) NOT NULL default '1',
+  `last_login` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`sys_seg_usuarios_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_usuarios`
+--
+
+LOCK TABLES `sys_seg_usuarios` WRITE;
+/*!40000 ALTER TABLE `sys_seg_usuarios` DISABLE KEYS */;
+INSERT INTO `sys_seg_usuarios` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','Administrador','Sistema','admin@email.com',1,'2009-10-21 03:49:10');
+/*!40000 ALTER TABLE `sys_seg_usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `sys_seg_usuarios_has_funciones_view`
+--
+
+DROP TABLE IF EXISTS `sys_seg_usuarios_has_funciones_view`;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_funciones_view`*/;
+/*!50001 CREATE TABLE `sys_seg_usuarios_has_funciones_view` (
+  `sys_seg_usuarios_id` int(11),
+  `sys_seg_submodulos_id` int(11),
+  `sys_seg_funciones_id` int(11),
+  `nombre_funcion` varchar(45)
+) ENGINE=MyISAM */;
+
+--
+-- Temporary table structure for view `sys_seg_usuarios_has_modulos_view`
+--
+
+DROP TABLE IF EXISTS `sys_seg_usuarios_has_modulos_view`;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_modulos_view`*/;
+/*!50001 CREATE TABLE `sys_seg_usuarios_has_modulos_view` (
+  `sys_seg_usuarios_id` int(11),
+  `sys_seg_modulos_id` int(11),
+  `nombre_modulo` varchar(45)
+) ENGINE=MyISAM */;
+
+--
+-- Table structure for table `sys_seg_usuarios_has_perfiles`
+--
+
+DROP TABLE IF EXISTS `sys_seg_usuarios_has_perfiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_seg_usuarios_has_perfiles` (
+  `sys_seg_usuarios_id` int(11) NOT NULL,
+  `sys_seg_perfiles_id` int(11) NOT NULL,
+  PRIMARY KEY  (`sys_seg_usuarios_id`,`sys_seg_perfiles_id`),
+  KEY `fk_sys_seg_usuarios_has_perfiles` (`sys_seg_usuarios_id`),
+  KEY `fk_sys_seg_perfiles_has_usuarios` (`sys_seg_perfiles_id`),
+  CONSTRAINT `fk_sys_seg_perfiles_has_usuarios` FOREIGN KEY (`sys_seg_perfiles_id`) REFERENCES `sys_seg_perfiles` (`sys_seg_perfiles_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sys_seg_usuarios_has_perfiles` FOREIGN KEY (`sys_seg_usuarios_id`) REFERENCES `sys_seg_usuarios` (`sys_seg_usuarios_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_seg_usuarios_has_perfiles`
+--
+
+LOCK TABLES `sys_seg_usuarios_has_perfiles` WRITE;
+/*!40000 ALTER TABLE `sys_seg_usuarios_has_perfiles` DISABLE KEYS */;
+INSERT INTO `sys_seg_usuarios_has_perfiles` VALUES (1,1);
+/*!40000 ALTER TABLE `sys_seg_usuarios_has_perfiles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `sys_seg_usuarios_has_recursos_view`
+--
+
+DROP TABLE IF EXISTS `sys_seg_usuarios_has_recursos_view`;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_recursos_view`*/;
+/*!50001 CREATE TABLE `sys_seg_usuarios_has_recursos_view` (
+  `sys_seg_usuarios_id` int(11),
+  `sys_seg_funciones_id` int(11),
+  `sys_seg_recursos_id` int(11),
+  `identificador_recurso` varchar(45),
+  `es_principal` tinyint(1)
+) ENGINE=MyISAM */;
+
+--
+-- Temporary table structure for view `sys_seg_usuarios_has_submodulos_view`
+--
+
+DROP TABLE IF EXISTS `sys_seg_usuarios_has_submodulos_view`;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_submodulos_view`*/;
+/*!50001 CREATE TABLE `sys_seg_usuarios_has_submodulos_view` (
+  `sys_seg_usuarios_id` int(11),
+  `sys_seg_modulos_id` int(11),
+  `sys_seg_submodulos_id` int(11),
+  `nombre_submodulo` varchar(45)
+) ENGINE=MyISAM */;
+
+--
+-- Current Database: `SYM3`
+--
+
+USE `SYM3`;
+
+--
+-- Final view structure for view `sys_seg_usuarios_has_funciones_view`
+--
+
+/*!50001 DROP TABLE `sys_seg_usuarios_has_funciones_view`*/;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_funciones_view`*/;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `sys_seg_usuarios_has_funciones_view` AS select `e`.`sys_seg_usuarios_id` AS `sys_seg_usuarios_id`,`b`.`sys_seg_submodulos_id` AS `sys_seg_submodulos_id`,`c`.`sys_seg_funciones_id` AS `sys_seg_funciones_id`,`c`.`nombre_funcion` AS `nombre_funcion` from ((((`sys_seg_modulos` `a` join `sys_seg_submodulos` `b` on((`a`.`sys_seg_modulos_id` = `b`.`sys_seg_modulos_id`))) join `sys_seg_funciones` `c` on((`b`.`sys_seg_submodulos_id` = `c`.`sys_seg_submodulos_id`))) join `sys_seg_perfiles_has_funciones` `d` on((`c`.`sys_seg_funciones_id` = `d`.`sys_seg_funciones_id`))) join `sys_seg_usuarios_has_perfiles` `e` on((`d`.`sys_seg_perfiles_id` = `e`.`sys_seg_perfiles_id`))) where ((`a`.`estado` = 1) and (`b`.`estado` = 1) and (`c`.`estado` = 1) and (`c`.`visible_menu` = 1)) group by `c`.`sys_seg_funciones_id`,`c`.`nombre_funcion` */;
+
+--
+-- Final view structure for view `sys_seg_usuarios_has_modulos_view`
+--
+
+/*!50001 DROP TABLE `sys_seg_usuarios_has_modulos_view`*/;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_modulos_view`*/;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `sys_seg_usuarios_has_modulos_view` AS select `e`.`sys_seg_usuarios_id` AS `sys_seg_usuarios_id`,`a`.`sys_seg_modulos_id` AS `sys_seg_modulos_id`,`a`.`nombre_modulo` AS `nombre_modulo` from ((((`sys_seg_modulos` `a` join `sys_seg_submodulos` `b` on((`a`.`sys_seg_modulos_id` = `b`.`sys_seg_modulos_id`))) join `sys_seg_funciones` `c` on((`b`.`sys_seg_submodulos_id` = `c`.`sys_seg_submodulos_id`))) join `sys_seg_perfiles_has_funciones` `d` on((`c`.`sys_seg_funciones_id` = `d`.`sys_seg_funciones_id`))) join `sys_seg_usuarios_has_perfiles` `e` on((`d`.`sys_seg_perfiles_id` = `e`.`sys_seg_perfiles_id`))) where ((`a`.`estado` = 1) and (`b`.`estado` = 1) and (`c`.`estado` = 1) and (`c`.`visible_menu` = 1)) group by `a`.`sys_seg_modulos_id`,`a`.`nombre_modulo` */;
+
+--
+-- Final view structure for view `sys_seg_usuarios_has_recursos_view`
+--
+
+/*!50001 DROP TABLE `sys_seg_usuarios_has_recursos_view`*/;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_recursos_view`*/;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `sys_seg_usuarios_has_recursos_view` AS select `e`.`sys_seg_usuarios_id` AS `sys_seg_usuarios_id`,`b`.`sys_seg_funciones_id` AS `sys_seg_funciones_id`,`a`.`sys_seg_recursos_id` AS `sys_seg_recursos_id`,`a`.`identificador_recurso` AS `identificador_recurso`,`a`.`es_principal` AS `es_principal` from ((((`sys_seg_recursos` `a` join `sys_seg_funciones` `b`) join `sys_seg_perfiles_has_funciones` `c`) join `sys_seg_perfiles` `d`) join `sys_seg_usuarios_has_perfiles` `e`) where ((`a`.`sys_seg_funciones_id` = `b`.`sys_seg_funciones_id`) and (`b`.`sys_seg_funciones_id` = `c`.`sys_seg_funciones_id`) and (`c`.`sys_seg_perfiles_id` = `d`.`sys_seg_perfiles_id`) and (`d`.`sys_seg_perfiles_id` = `e`.`sys_seg_perfiles_id`) and (`a`.`estado` = 1) and (`b`.`estado` = 1) and (`d`.`estado` = 1)) */;
+
+--
+-- Final view structure for view `sys_seg_usuarios_has_submodulos_view`
+--
+
+/*!50001 DROP TABLE `sys_seg_usuarios_has_submodulos_view`*/;
+/*!50001 DROP VIEW IF EXISTS `sys_seg_usuarios_has_submodulos_view`*/;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `sys_seg_usuarios_has_submodulos_view` AS select `e`.`sys_seg_usuarios_id` AS `sys_seg_usuarios_id`,`a`.`sys_seg_modulos_id` AS `sys_seg_modulos_id`,`b`.`sys_seg_submodulos_id` AS `sys_seg_submodulos_id`,`b`.`nombre_submodulo` AS `nombre_submodulo` from ((((`sys_seg_modulos` `a` join `sys_seg_submodulos` `b` on((`a`.`sys_seg_modulos_id` = `b`.`sys_seg_modulos_id`))) join `sys_seg_funciones` `c` on((`b`.`sys_seg_submodulos_id` = `c`.`sys_seg_submodulos_id`))) join `sys_seg_perfiles_has_funciones` `d` on((`c`.`sys_seg_funciones_id` = `d`.`sys_seg_funciones_id`))) join `sys_seg_usuarios_has_perfiles` `e` on((`d`.`sys_seg_perfiles_id` = `e`.`sys_seg_perfiles_id`))) where ((`a`.`estado` = 1) and (`b`.`estado` = 1) and (`c`.`estado` = 1) and (`c`.`visible_menu` = 1)) group by `a`.`sys_seg_modulos_id`,`b`.`nombre_submodulo` */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2009-10-21  0:16:19
+CREATE USER 'sym3App'@'localhost' IDENTIFIED BY 's1m34pp';
+GRANT SELECT, INSERT, UPDATE, DELETE ON SYM3.* TO 'sym3App'@'localhost' IDENTIFIED BY 's1m34pp' WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON SYM3.* TO 'sym3App'@'127.0.0.1' IDENTIFIED BY 's1m34pp' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
