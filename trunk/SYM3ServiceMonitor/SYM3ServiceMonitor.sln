@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SYM3ServiceMonitor", "SYM3ServiceMonitor\SYM3ServiceMonitor.csproj", "{22365771-3D00-4EB7-9DEF-D629F687C4F2}"
 EndProject
 Global
