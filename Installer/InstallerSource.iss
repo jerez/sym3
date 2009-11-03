@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{59B62A2D-9EEA-4CE0-B4F4-0239E929E0FC}
 AppName=SYM3
-AppVerName=SYM3 1.2
+AppVerName=SYM3 1.3
 AppPublisher=ID&AE
 AppPublisherURL=http://code.google.com/p/sym3/
 AppSupportURL=http://code.google.com/p/sym3/
@@ -16,7 +16,7 @@ DefaultDirName=\SYM3
 DisableDirPage=true
 DefaultGroupName=SYM3
 DisableProgramGroupPage=true
-LicenseFile=\Sym3Source\conf\GPL.LIC
+LicenseFile=\Sym3Source\Conf\GPL.LIC
 OutputDir=\Sym3Source\Installer
 OutputBaseFilename=SetupSYM3
 Compression=lzma
@@ -33,7 +33,7 @@ Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:Ad
 Name: quicklaunchicon; Description: {cm:CreateQuickLaunchIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
 
 [Files]
-Source: C:\Sym3Source\SYM3ServiceMonitor\SYM3ServiceMonitor\bin\Release\SYM3ServiceMonitor.exe; DestDir: {app}; Flags: ignoreversion
+Source: \Sym3Source\SYM3ServiceMonitor\SYM3ServiceMonitor\bin\Release\SYM3ServiceMonitor.exe; DestDir: {app}; Flags: ignoreversion
 
 Source: ..\Apache\*; DestDir: {app}\Apache; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: ..\MySql\*; DestDir: {app}\MySql; Flags: ignoreversion recursesubdirs createallsubdirs
