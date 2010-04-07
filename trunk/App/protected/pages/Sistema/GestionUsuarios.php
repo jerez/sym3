@@ -42,6 +42,7 @@ class GestionUsuarios extends DatagridBasePage
 			$item->ApellidosColumn->ApellidosTextBox->Columns=15;
 			$item->EmailColumn->EmailTextBox->Columns=15;
 			$item->LoginColumn->txtPasswd->Columns=15;
+			$item->LoginColumn->txtLogin->Columns=15;
 		}
 	}
 
@@ -57,6 +58,11 @@ class GestionUsuarios extends DatagridBasePage
 		$record->apellidos=$item->ApellidosColumn->ApellidosTextBox->Text;
 		$record->email=$item->EmailColumn->EmailTextBox->Text;
 		$record->estado=$item->EstadoColumn->CheckBox->Checked;
+		$record->password =md5($item->LoginColumn->txtPasswd->Text);
+		if (ltrim(rtrim($record->login))=="") {
+			$record->login=$item->LoginColumn->txtLogin->Text;
+		}
+		print_r($record);
 	}
 	
 	/**

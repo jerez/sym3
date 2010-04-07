@@ -55,5 +55,4 @@
 			<a href="http://unisalle.lasalle.edu.co/">Universidad de la Salle</a>
 		</div>
 	</body>
-	<com:TJavascriptLogger/>
 </html>

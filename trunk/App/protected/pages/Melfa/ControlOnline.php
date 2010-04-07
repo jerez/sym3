@@ -12,6 +12,7 @@ class ControlOnline extends TPage
 		$this->_configuracion = MelfaRecord::finder()->findByPk(1);
 		if(!$this->IsPostBack)
 		{
+			$this->EncenderServo();
 			$data=array('Waist','Shoulder','Elbow','Twist','Pitch','Roll');
 			$this->DBRadioButtonList2->DataSource=$data;
 			$this->DBRadioButtonList2->dataBind();
@@ -61,6 +62,11 @@ class ControlOnline extends TPage
 	/**
 	 * pARTE DEL CONTROLADOR
 	 */
+	
+	public function EncenderServo()
+	{
+		$this->EjecutarComando(array("1;1;SRVON"));
+	}
 	
 	public function AbrirPinza()
 	{
