@@ -11,7 +11,9 @@
 			<%# $this->Parent->DataItem->login %>
 		</prop:ItemTemplate>
 		<prop:EditItemTemplate>
-			<com:TLiteral Text='<b><%# $this->Parent->DataItem->login %><b/> Password:'/>
+			<com:TLiteral Text='Login:<br/>'/>
+			<com:TTextBox ID="txtLogin" Text=<%# $this->Parent->DataItem->login %> />
+			<com:TLiteral Text='Password:<br/>'/>
 			<com:TTextBox ID="txtPasswd" Text=<%# $this->Parent->DataItem->password %> TextMode='Password'/>
 			<com:TRequiredFieldValidator ControlToValidate="txtPasswd" Display="Dynamic" FocusOnError="true" ErrorMessage="*"/>
 			<com:TRegularExpressionValidator ControlToValidate="txtPasswd" Display="Dynamic" RegularExpression="[\w\.]{5,16}" FocusOnError="true" ErrorMessage="*" />

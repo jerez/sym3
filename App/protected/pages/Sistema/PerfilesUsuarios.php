@@ -105,6 +105,7 @@ class PerfilesUsuarios extends TPage
 
 		$dataReader->bindColumn(1,$idPerfil);
 
+		$arrayIds=array();
 		while($dataReader->read()!==false){
 			$arrayIds[]=$idPerfil;
 		}
@@ -143,7 +144,7 @@ class PerfilesUsuarios extends TPage
 			foreach ($this->getData() as $perfil) {
 				if ($perfil['tiene_perfil']) {
 					$command->Text = "INSERT INTO sys_seg_usuarios_has_perfiles(sys_seg_usuarios_id,sys_seg_perfiles_id)
-									  values($this->IdUsuario,{$perfil['sys_seg_funciones_id']})";
+									  values($this->IdUsuario,{$perfil['sys_seg_perfiles_id']})";
 					$command->execute();
 				}
 			}
